@@ -9,8 +9,11 @@ shiftBy x c
        in chr (ord 'A' + mod (relOrd + x) 26)
   | otherwise = c
 
-caesarCiph :: String -> String
-caesarCiph = map (shiftBy 1)
+-- caesarCiph :: String -> String
+caesarCiph = do 
+  putStr "Enter message(uppercase): "
+  msg <- getLine
+  putStrLn $ map (shiftBy 1) msg
 
 unCaesar :: String -> String
 unCaesar = map (shiftBy (-1))
@@ -34,6 +37,14 @@ testVigCiph = do
   print msg
   print (kwString kw 0 msg)
   print (vigCiph kw msg)
+
+vigCiphIn :: IO ()
+vigCiphIn = do
+  putStrLn "Enter message(uppercase): "
+  msg <- getLine 
+  putStrLn "Enter Keyword(uppercase): "
+  kw <- getLine
+  putStrLn $ vigCiph kw msg 
 
 vigCiph :: String -> String -> String
 vigCiph kw msg = go kw 0 msg
