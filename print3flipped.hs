@@ -1,0 +1,15 @@
+-- print3flipped.hs
+module Print3Flipped where
+
+myGreeting :: String
+myGreeting = (++) "hello" " world!"
+
+hello :: String
+hello = "hello"
+
+main :: IO ()
+main = do
+    putStrLn myGreeting
+    putStrLn secondGreeting
+    where secondGreeting =
+        (++) hello ((++) " " world)
