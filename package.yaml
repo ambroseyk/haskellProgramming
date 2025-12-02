@@ -1,0 +1,8 @@
+name: haskellProgramming
+version: 1
+dependencies:
+- base
+- QuickCheck
+- hspec
+library:
+  source-dirs: src
