@@ -1,4 +1,6 @@
 {-# LANGUAGE RankNTypes #-}
+{-# LANGUAGE FlexibleInstances #-}
+
 incIfJust :: Num a => Maybe a -> Maybe a 
 incIfJust (Just x) = Just (x + 1)
 incIfJust Nothing = Nothing 
@@ -74,6 +76,17 @@ maybeToList :: Nat Maybe []
 maybeToList (Just x) = [x]
 maybeToLIst Nothing = []
 
-degenerateMtl :: Num a => Nat Maybe [] 
-degenerateMtl Nothing = []
-degenerateMtl (Just a) = [a + 1]
+-- degenerateMtl :: Num a => Nat Maybe [] 
+-- degenerateMtl Nothing = []
+-- degenerateMtl (Just a) = [a + 1]
+
+
+data Tuple a b = 
+    Tuple a b 
+    deriving (Eq, Show)
+
+newtype Flip f a b = Flip (f b a)
+    deriving (Eq, Show)
+
+instance Functor (Flip Tuple a) where 
+    fmap f (Flip (Tuple b a)) = Flip $ Tuple (f b) a 

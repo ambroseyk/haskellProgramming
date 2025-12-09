@@ -1,7 +1,13 @@
+
+
 {-# LANGUAGE ViewPatterns #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+
+module FunctorTest where
 import Test.QuickCheck
 import Test.QuickCheck.Function
+
+
 
 -- fmap id = id
 -- fmap (p . q) == (fmap p) . (fmap q)
