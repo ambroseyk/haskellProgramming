@@ -135,3 +135,18 @@ cowFromString'' name' age' weight' =
 cowFromString''' :: String -> Int -> Int -> Maybe Cow 
 cowFromString''' name' age' weight' = 
   pure Cow <*> noEmpty name' <*> noNegative age' <*> noNegative weight' 
+
+
+n = pure ($ 2) <*> Just (+2)
+-- concretizing Applicatives methods for Maybe 
+
+mPure :: a -> Maybe a 
+mPure = pure 
+
+embed :: Num a => Maybe ((a -> b) -> b) 
+embed = mPure ($ 2)
+
+mApply :: Maybe ((a -> b) -> b) -> Maybe (a -> b) -> Maybe b 
+mApply = (<*>) 
+
+myResult = embed `mApply` Just (+2)

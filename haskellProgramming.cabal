@@ -10,9 +10,12 @@ build-type:     Simple
 
 library
   exposed-modules:
+      Apl1
       Arith2
+      BadMonoid
       FunctorTest
       IOprac
+      ListApl
       Person
       ReplaceExperiment
       WordNumber
@@ -24,5 +27,6 @@ library
   build-depends:
       QuickCheck
     , base
+    , checkers
     , hspec
   default-language: Haskell2010

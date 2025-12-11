@@ -4,5 +4,6 @@ dependencies:
 - base
 - QuickCheck
 - hspec
+- checkers
 library:
   source-dirs: src
